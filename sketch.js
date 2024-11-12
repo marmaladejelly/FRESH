@@ -1,4 +1,5 @@
 let stage = 0;
+let changeStage;
 let startScreen;
 let bg;
 let textBox;
@@ -15,9 +16,6 @@ function preload() {
 function setup() {
   createCanvas(1366,768); //set the canvas width and height using the browser's dimensions.
   
-  //start button setup
-  startButton = createButton('new game');
-  startButton.position(100, 640);
   }
 
 
@@ -38,13 +36,17 @@ function setup() {
 
         //create new game button
         let newGame = createButton('NEW GAME');
-        newGame.position(1200,20);
+        newGame.position(30,600);
+        newGame.style('font-family','Courier New');
+        newGame.style('font-size','40px');
         //start game when the button is pressed.
         newGame.mousePressed(stage = 2);
         
         //create new game button
         let settings = createButton('SETTINGS');
-        settings.position(1280,20);
+        settings.position(30,660);
+        settings.style('font-family','Courier New');
+        settings.style('font-size','40px');
         //start game when the button is pressed.
         settings.mousePressed(stage = 1);
 
@@ -53,8 +55,9 @@ function setup() {
 
         break;
     case 2:
-        // hide the button once the game starts
-        startButton.hide();
+        // hide start screen buttons once the game starts
+        newGame.hide();
+        settings.hide();
       
         //background screen
         image(bg,0,0);
