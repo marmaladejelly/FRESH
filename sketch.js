@@ -7,9 +7,9 @@ let yourName;
 let yn = yourName.value();
 
 function preload() {
-  startScreen = loadImage('images/start_screen.png'); //start screen
-  bg = loadImage('images/background.png'); //blank background
-  textBox = loadImage('images/text_box.png'); //text box
+  startScreen = loadImage('start_screen.png'); //start screen
+  bg = loadImage('background.png'); //blank background
+  textBox = loadImage('text_box.png'); //text box
 }
 
 function setup() {
@@ -36,9 +36,23 @@ function setup() {
         //start screen
         image(startScreen,0,0);
 
-        startButton.mousePressed(stage = 1); //when button is pressed, call startGame function
+        //create new game button
+        let newGame = createButton('NEW GAME');
+        newGame.position(1200,20);
+        //start game when the button is pressed.
+        newGame.mousePressed(stage = 2);
+        
+        //create new game button
+        let settings = createButton('SETTINGS');
+        settings.position(1280,20);
+        //start game when the button is pressed.
+        settings.mousePressed(stage = 1);
+
         break;
-    case 1:
+     case 1:
+
+        break;
+    case 2:
         // hide the button once the game starts
         startButton.hide();
       
@@ -48,17 +62,15 @@ function setup() {
         //type in your name
         yourName = createInput();
         yourName.position(550,300);
+        text(yn, 25, 55);
 
         //text box
         image(textBox,0,0);
         text('Hello, what is your name?',60,600);
         break;
-    case 2:
+    case 3:
         text('Are you sure?', 120, 640);
 
-        break;
-    case 3:
-        
         break;
     case 4:
             
